@@ -88,7 +88,8 @@ selectSalas.addEventListener("change", () => {
 
 // -------------------- Enviar mensaje a sala -------------------
 btnEnviarSala.addEventListener("click", () => {
-  const sala = selectSalas.value;
+  //const sala = selectSalas.value;
+  const sala = salaActual;
   const mensaje = txtMensajeSala.value;
   if (!mensaje) return;
 

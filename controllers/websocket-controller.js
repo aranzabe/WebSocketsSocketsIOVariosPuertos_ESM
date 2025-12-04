@@ -1,6 +1,8 @@
+import kleur from 'kleur';
+
 export const socketController = (socket,io) => {
     //Con este bloque probamos a cargar la url en un navegador: http://localhost:9090/
-    console.log("Cliente conectado: ", socket.id); //Estos 'id' son muy volátiles y no es muy correcto usarlos para nada especial. Luego se asociarán los clientes a salas y eso es lo más correcto, gestionarlo en las salas.
+    console.log(kleur.yellow().bold("Cliente conectado:"), socket.id);
 
 
     // io.on("connection", (socket) => {
@@ -13,7 +15,7 @@ export const socketController = (socket,io) => {
 
     // ----------------- Desconexión -----------------
     socket.on("disconnect", () => {
-        console.log("Cliente desconectado", socket.id);
+        console.log(kleur.yellow().bold("Cliente desconectado", socket.id));
     });
 
     // ----------------- Mensaje general -----------------

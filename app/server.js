@@ -5,6 +5,7 @@ import { socketController } from '../controllers/websocket-controller.js';
 import {router as userRoutes} from '../routes/userRoutes.js'
 import { createServer } from 'http';
 import { Server } from 'socket.io';
+import kleur from 'kleur';
 dotenv.config();
 
 class MiServer {
@@ -62,11 +63,11 @@ class MiServer {
 
     listen() {
         this.serverExpress.listen(process.env.PORT, () => {
-            console.log(`Servidor Express escuchando en: ${process.env.PORT}`);
+            console.log(kleur.green().bold(`🟢 Servidor Express escuchando en: ${process.env.PORT}`));
             });
 
         this.serverWebSocket.listen(process.env.WEBSOCKETPORT, () => {
-            console.log(`Servidor de WebSockets escuchando en: ${process.env.WEBSOCKETPORT}`);
+            console.log(kleur.blue().bold(`🔵 Servidor de WebSockets escuchando en: ${process.env.WEBSOCKETPORT}`));
         });
     }
 }
