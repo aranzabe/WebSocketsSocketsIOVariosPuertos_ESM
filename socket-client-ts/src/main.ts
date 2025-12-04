@@ -3,7 +3,7 @@ import { io } from "socket.io-client";
 // Identificador único por cliente
 let clientId = "";
 console.log("ID del cliente:", clientId);
-let salaActual = ""; // sala activa
+let salaActual = "Aldeanos"; // sala activa
 
 // DOM
 const lblOn = document.querySelector("#lblOn") as HTMLElement;
@@ -36,6 +36,10 @@ socket.on("connect", () => {
   lblOn.style.display = "inline";
   actualizarClientes();
 });
+
+// socket.on("mensaje-bienvenida", (data) => {
+//   console.log("Bienvenida del servidor:", data);
+// });
 
 socket.on("disconnect", () => {
   lblOff.style.display = "inline";
@@ -76,7 +80,7 @@ btnEnviarPrivado.addEventListener("click", () => {
 selectSalas.addEventListener("change", () => {
   const nuevaSala = selectSalas.value;
 
-  socket.emit("cambiar-sala", { salaAnterior: salaActual, salaNueva: nuevaSala }, (msg) => {
+  socket.emit("cambiar-sala", { salaAnterior: salaActual, salaNueva: nuevaSala }, (msg: any) => {
     console.log(msg);
     salaActual = nuevaSala; // actualizar sala actual
   });

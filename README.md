@@ -347,5 +347,29 @@ Actualiza el `<select>` donde se eligen usuarios para mensajes privados.
 | Cambiar sala | cambiar-sala | (callback confirm) |
 | Lista clientes | solicitar-clientes | callback con array |
 
-* * *
+🎯 **Instancias**
+==================
 
+Cada vez que un cliente se conecta, Socket.IO crea un objeto Socket único para esa conexión.
+Ese objeto contiene:
+
+- socket.id (ID único por conexión)
+
+- Salas en las que participa (socket.rooms)
+
+- Información de handshake, IP, headers, etc.
+
+-  Todos los listeners (socket.on(...)) que tú definas
+
+- Métodos como .emit(), .join(), .leave(), .to(), etc.
+
+Ese objeto vive mientras la conexión esté activa.
+Cuando el cliente se desconecta, Socket.IO:
+
+- elimina ese objeto,
+
+- dispara el evento "disconnect",
+
+- limpia salas, listeners, etc.
+
+* * *

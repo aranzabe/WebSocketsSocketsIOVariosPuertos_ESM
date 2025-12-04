@@ -3,6 +3,14 @@ export const socketController = (socket,io) => {
     console.log("Cliente conectado: ", socket.id); //Estos 'id' son muy volátiles y no es muy correcto usarlos para nada especial. Luego se asociarán los clientes a salas y eso es lo más correcto, gestionarlo en las salas.
 
 
+    // io.on("connection", (socket) => {
+    // socket.emit("mensaje-bienvenida", {
+    //     msg: "Bienvenido!",
+    //     id: socket.id,
+    //     fecha: Date.now()
+    //     });
+    // });
+
     // ----------------- Desconexión -----------------
     socket.on("disconnect", () => {
         console.log("Cliente desconectado", socket.id);
